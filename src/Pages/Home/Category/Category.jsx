@@ -31,7 +31,7 @@ const Category = () => {
           dynamicBullets: true,
         }}
         modules={[Pagination]}
-        className="mySwiper mb-24 py-8 max-w-6xl"
+        className="mySwiper mb-8 py-4 max-w-6xl"
       >
         <SwiperSlide>
           <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
