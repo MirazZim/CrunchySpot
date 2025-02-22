@@ -1,10 +1,11 @@
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle"
 import FeaturedImg from "../../../assets/home/featured.jpg";
-import './FeaturedBanner.css';  
+import './FeaturedBanner.css';
 
 const FeatureBanner = () => {
   return (
     <div className="featured-banner bg-fixed bg-[#f7f7f7] py-20 pt-16 mb-7 text-white">
+      {/* Bg -fixed use kora hoise dekhe when we scroll down the page we see this cool feature */}
       <SectionTitle
         heading="Our Featured Menu"
         subHeading="Check it out"
@@ -26,7 +27,7 @@ const FeatureBanner = () => {
         </div>
       </div>
     </div>
-  )   
+  )
 }
 
 export default FeatureBanner
