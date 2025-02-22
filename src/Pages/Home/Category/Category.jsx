@@ -12,10 +12,16 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination } from "swiper/modules";
+import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
 const Category = () => {
   return (
-    <div className="flex justify-center items-center">
+      <section >
+        <SectionTitle
+         heading="Order Online"
+         subHeading="From 11:00am to 10:00pm"
+        />
+         <div className="flex justify-center items-center">
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
@@ -89,6 +95,7 @@ const Category = () => {
         </SwiperSlide>
       </Swiper>
     </div>
+      </section>
   );
 };
 
