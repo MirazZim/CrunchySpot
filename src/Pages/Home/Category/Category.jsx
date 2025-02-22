@@ -1,0 +1,95 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import CategorySlider1 from "../../../assets/home/slide1.jpg";
+import CategorySlider2 from "../../../assets/home/slide2.jpg";
+import CategorySlider3 from "../../../assets/home/slide3.jpg";
+import CategorySlider4 from "../../../assets/home/slide4.jpg";
+import CategorySlider5 from "../../../assets/home/slide5.jpg";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import required modules
+import { Pagination } from "swiper/modules";
+
+const Category = () => {
+  return (
+    <div className="flex justify-center items-center">
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        centeredSlides={true}
+        pagination={{
+          clickable: true,
+          dynamicBullets: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper mb-24 py-8 max-w-6xl"
+      >
+        <SwiperSlide>
+          <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
+            <img
+              src={CategorySlider1}
+              alt="Salad"
+              className="w-full object-cover"
+            />
+            <h3 className="absolute bottom-0 w-full py-3 text-2xl font-semibold uppercase text-center bg-black/70 text-white backdrop-blur-sm">
+              Salad
+            </h3>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
+            <img
+              src={CategorySlider2}
+              alt="Pizzas"
+              className="w-full object-cover"
+            />
+            <h3 className="absolute bottom-0 w-full py-3 text-2xl font-semibold uppercase text-center bg-black/70 text-white backdrop-blur-sm">
+              Pizzas
+            </h3>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
+            <img
+              src={CategorySlider3}
+              alt="Soup"
+              className="w-full object-cover"
+            />
+            <h3 className="absolute bottom-0 w-full py-3 text-2xl font-semibold uppercase text-center bg-black/70 text-white backdrop-blur-sm">
+              Soup
+            </h3>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
+            <img
+              src={CategorySlider4}
+              alt="Desserts"
+              className="w-full object-cover"
+            />
+            <h3 className="absolute bottom-0 w-full py-3 text-2xl font-semibold uppercase text-center bg-black/70 text-white backdrop-blur-sm">
+              Desserts
+            </h3>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
+            <img
+              src={CategorySlider5}
+              alt="Salad"
+              className="w-full object-cover"
+            />
+            <h3 className="absolute bottom-0 w-full py-3 text-2xl font-semibold uppercase text-center bg-black/70 text-white backdrop-blur-sm">
+              Salad
+            </h3>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
+  );
+};
+
+export default Category;
