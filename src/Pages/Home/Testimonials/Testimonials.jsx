@@ -52,7 +52,7 @@ const Testimonials = () => {
                                     readOnly
                                 />
                                 <p className="text-lg text-gray-600 mb-4 my-8">{review.details}</p>
-                                <h3 className="text-2xl font-semibold">{review.name}</h3>
+                                <h3 className="text-2xl font-semibold text-gray-800">{review.name}</h3>
                             </div>
                         </SwiperSlide>
                     ))}
