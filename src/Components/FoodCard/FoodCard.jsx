@@ -3,18 +3,21 @@ const FoodCard = ({ item }) => {
     const {name, recipe, image, price} = item;
     
   return (
-    <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col justify-between">
-      <img src={image} alt={name} className="w-full h-48 object-cover rounded-t-lg" />
-      <div className="mt-4">
-        <h2 className="text-2xl font-bold">{name}</h2>
-        <p className="text-gray-600">{recipe}</p>
+    <div className="flex space-x-4 items-center p-4 transition duration-150 ease-in-out hover:scale-105 hover:shadow-lg mb-4"
+    
+    
+    >
+      <img 
+        style={{borderRadius: '0px 200px 200px 200px'}}
+        src={image} 
+        alt={name}
+        className="w-[120px] h-[100px] object-cover rounded-lg transition duration-150 ease-in-out"
+      />
+      <div className="flex-1 transition duration-150 ease-in-out">
+        <h3 className="text-xl font-medium text-gray-900 mb-1 transition duration-150 ease-in-out">{name}</h3>
+        <p className="text-sm text-gray-600 line-clamp-2 transition duration-150 ease-in-out">{recipe}</p>
       </div>
-      <div className="mt-4 flex items-center justify-between">
-        <p className="text-xl font-bold">${price}</p>
-        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
-          Order Now
-        </button>
-      </div>
+      <span className="text-lg font-semibold text-amber-600 transition duration-150 ease-in-out">${price}</span>
     </div>
   )
 }
