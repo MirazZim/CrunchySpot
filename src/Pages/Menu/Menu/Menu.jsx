@@ -1,9 +1,21 @@
+import Cover from "../../Shared/Cover/Cover"
+import MenuBackDrop from '../../../assets/menu/banner3.jpg'
+import PopularMenu from "../../Home/PopularMenu/PopularMenu"
 
 
 const Menu = () => {
   return (
     <div>
-        <h2>Lalak</h2>
+        <Cover img={MenuBackDrop} title="Our Menu"/>
+        <PopularMenu></PopularMenu>   
+
+
+        <Cover img={MenuBackDrop} title="Our Menu"/>
+        <PopularMenu></PopularMenu>   
+
+
+        <Cover img={MenuBackDrop} title="Our Menu"/>
+        <PopularMenu></PopularMenu>    
     </div>
   )
 }
