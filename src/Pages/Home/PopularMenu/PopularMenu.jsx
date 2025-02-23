@@ -2,8 +2,13 @@ import { useEffect } from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { useState } from "react";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
+import useMenu from "../../../Hooks/useMenu";
 const PopularMenu = () => {
-  const [menu, setMenu] = useState([]);
+
+  const [menu, loading] = useMenu();
+  const popularItems = menu.filter((item) => item.category === "popular");  
+
+ /*  const [menu, setMenu] = useState([]);
   useEffect(() => {
     fetch("menu.json")
       .then((res) => res.json())
@@ -11,7 +16,7 @@ const PopularMenu = () => {
         const popularItems = data.filter((item) => item.category === "popular");
         setMenu(popularItems);
       });
-  }, []);
+  }, []); */
 
   return (
     <section className="mb-12">
@@ -28,10 +33,13 @@ const PopularMenu = () => {
           // and creating a MenuItem component for it
           // We give each MenuItem a unique key using the item's ID
           // And pass the full item data as a prop
-          menu.map((item) => (
+          popularItems.map((item) => (
             <MenuItem key={item._id} item={item}></MenuItem>
           ))
         }
+        <div className="flex items-center justify-center">
+          <button className="btn mt-4 rounded-full border-0 w-full md:w-auto px-8 py-4">View full Menu</button>
+        </div>
       </div>
     </section>
   );
