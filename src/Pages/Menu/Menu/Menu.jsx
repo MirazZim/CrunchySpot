@@ -24,19 +24,19 @@ const Menu = () => {
 
         {/* Dessert Menu Item */}
         <SectionTitle heading="Desserts" subHeading="Please Check" />
-        <MenuCategory title="Desserts" coverImg={DessertBackDrop} items={dessert}/>
+        <MenuCategory title="Desserts" message="Please Check Our Dessert Menu" coverImg={DessertBackDrop} items={dessert}/>
 
         {/* Salad Menu Item */}
         <SectionTitle heading="Salad" subHeading="Please Check" />
-        <MenuCategory title="Salad" coverImg={saladBackDrop} items={salad}/>  
+        <MenuCategory title="Salad" message="Please Check Our Salad Menu" coverImg={saladBackDrop} items={salad}/>  
 
         {/* Soup Menu Item */}  
         <SectionTitle heading="Soup" subHeading="Please Check" />
-        <MenuCategory title="Soup" coverImg={soupBackDrop} items={soup}/>
+        <MenuCategory title="Soup" message="Please Check Our Soup Menu" coverImg={soupBackDrop} items={soup}/>
 
         {/* Pizza Menu Item */}  
         <SectionTitle heading="Pizza" subHeading="Please Check" />
-        <MenuCategory title="Pizza" coverImg={pizzaBackDrop} items={pizza}/>
+        <MenuCategory title="Pizza" message="Please Check Our Pizza Menu" coverImg={pizzaBackDrop} items={pizza}/>
 
         {/*  */}  
 
