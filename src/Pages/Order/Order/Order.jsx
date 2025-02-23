@@ -20,19 +20,19 @@ const Order = () => {
     <div className="bg-white">
       <Cover img={OrderBanner} title="Order Food" />
       <br />
-      <br />
-      <div className="container mx-auto p-4"
+      
+      <div className="container mx-auto p-4 rounded-lg bg-gradient-to-r from-gray-50 to-gray-300"
        style={{
         boxShadow:
           " inset 0 4px 6px -1px rgba(0, 0, 0, 0.2), inset 0 2px 4px -2px rgba(0, 0, 0, 0.2), inset 0 -4px 6px -1px rgba(0, 0, 0, 0.2), inset 0 -2px 4px -2px rgba(0, 0, 0, 0.2)"
       }}>
         <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList className="flex justify-center gap-2 mb-7">
-            <Tab className="px-6 py-3 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold shadow-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition duration-300 ease-in-out">Salad</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold shadow-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition duration-300 ease-in-out">Pizza</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold shadow-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition duration-300 ease-in-out">Soup</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold shadow-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition duration-300 ease-in-out">Dessert</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold shadow-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition duration-300 ease-in-out">Drinks</Tab>
+            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition duration-300 ease-in-out filter backdrop-blur-md">Salad</Tab>
+            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition duration-300 ease-in-out filter backdrop-blur-md">Pizza</Tab>
+            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition duration-300 ease-in-out filter backdrop-blur-md">Soup</Tab>
+            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition duration-300 ease-in-out filter backdrop-blur-md">Dessert</Tab>
+            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition duration-300 ease-in-out filter backdrop-blur-md">Drinks</Tab>
           </TabList>
           <TabPanel>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

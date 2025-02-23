@@ -1,25 +1,23 @@
 const FoodCard = ({ item }) => {
+  const { name, recipe, image, price } = item;
 
-    const {name, recipe, image, price} = item;
-    
   return (
-    <div className="flex space-x-4 items-center p-4 transition duration-150 ease-in-out hover:scale-105 hover:shadow-lg mb-4"
-    
-    
-    >
-      <img 
-        style={{borderRadius: '0px 200px 200px 200px'}}
-        src={image} 
+    <div className="flex flex-col space-y-6 items-center p-8 border-2 border-gray-300 rounded-lg transition duration-150 ease-in-out hover:scale-105 hover:shadow-lg mb-6">
+      <img
+        src={image}
         alt={name}
-        className="w-[120px] h-[100px] object-cover rounded-lg transition duration-150 ease-in-out"
+        className="w-full h-[200px] object-cover rounded-t-lg transition duration-150 ease-in-out"
       />
-      <div className="flex-1 transition duration-150 ease-in-out">
-        <h3 className="text-xl font-medium text-gray-900 mb-1 transition duration-150 ease-in-out">{name}</h3>
-        <p className="text-sm text-gray-600 line-clamp-2 transition duration-150 ease-in-out">{recipe}</p>
+      <div className="flex flex-col p-4">
+        <h3 className="text-2xl font-medium text-gray-900 mb-2">{name}</h3>
+        <p className="text-sm text-gray-600 line-clamp-2">{recipe}</p>
       </div>
-      <span className="text-lg font-semibold text-amber-600 transition duration-150 ease-in-out">${price}</span>
+      <div className="w-full h-[1px] bg-gray-300 my-4"></div>
+      <button className="bg-amber-600 text-white font-bold py-3 px-6 rounded-full hover:bg-amber-700 transition duration-150 ease-in-out">
+        ${price} - Add to cart
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default FoodCard
+export default FoodCard;
