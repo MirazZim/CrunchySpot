@@ -1,7 +1,7 @@
 const MenuItem = ({item}) => {
     const {name, recipe, image, price} = item;
     return (
-        <div className="flex space-x-4 items-center p-4 transition duration-150 ease-in-out hover:scale-105 hover:shadow-lg">
+        <div className="flex space-x-4 items-center p-4 transition duration-150 ease-in-out hover:scale-105 hover:shadow-lg mb-4">
             <img 
             style={{borderRadius: '0px 200px 200px 200px'}}
                 src={image} 
