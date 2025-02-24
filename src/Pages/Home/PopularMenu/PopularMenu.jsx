@@ -3,6 +3,7 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { useState } from "react";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 import useMenu from "../../../Hooks/useMenu";
+import { Link } from "react-router-dom";
 const PopularMenu = () => {
 
   const [menu, loading] = useMenu();
@@ -37,9 +38,33 @@ const PopularMenu = () => {
             <MenuItem key={item._id} item={item}></MenuItem>
           ))
         }
-        <div className="flex items-center justify-center">
-          <button className="btn mt-4 rounded-full border-0 w-full md:w-auto px-8 py-4">View full Menu</button>
-        </div>
+        <div className="flex items-center justify-center mt-8">
+                <Link to="/menu">
+                    <button
+                        className="btn bg-[#16453D] hover:bg-[#12332E] text-gray-100 font-medium rounded-full px-8 py-3 text-base shadow-lg shadow-[#16453D]/50 transition duration-300 ease-in-out hover:scale-105"
+                        style={{
+                            boxShadow:
+                                "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                        }}
+                    >
+                        View and Order It
+                        <svg
+                            className="w-6 h-6 ml-2 -mr-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                            ></path>
+                        </svg>
+                    </button>
+                </Link>
+            </div>
       </div>
     </section>
   );

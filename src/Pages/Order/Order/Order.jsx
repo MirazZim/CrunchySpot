@@ -33,11 +33,11 @@ const Order = () => {
       }}>
         <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList className="flex justify-center gap-2 mb-7">
-            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg transition duration-300 ease-in-out filter backdrop-blur-md">Salad</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg transition duration-300 ease-in-out filter backdrop-blur-md">Pizza</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg transition duration-300 ease-in-out filter backdrop-blur-md">Soup</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg transition duration-300 ease-in-out filter backdrop-blur-md">Dessert</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg transition duration-300 ease-in-out filter backdrop-blur-md">Drinks</Tab>
+            <Tab className="btn bg-[#16453D] hover:bg-[#12332E] text-gray-100 font-medium rounded-full px-8 py-3 text-base shadow-lg shadow-[#16453D]/50 transition duration-300 ease-in-out hover:scale-105" style={{ boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}>Salad</Tab>
+            <Tab className="btn bg-[#16453D] hover:bg-[#12332E] text-gray-100 font-medium rounded-full px-8 py-3 text-base shadow-lg shadow-[#16453D]/50 transition duration-300 ease-in-out hover:scale-105" style={{ boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}>Pizza</Tab>
+            <Tab className="btn bg-[#16453D] hover:bg-[#12332E] text-gray-100 font-medium rounded-full px-8 py-3 text-base shadow-lg shadow-[#16453D]/50 transition duration-300 ease-in-out hover:scale-105" style={{ boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}>Soup</Tab>
+            <Tab className="btn bg-[#16453D] hover:bg-[#12332E] text-gray-100 font-medium rounded-full px-8 py-3 text-base shadow-lg shadow-[#16453D]/50 transition duration-300 ease-in-out hover:scale-105" style={{ boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}>Dessert</Tab>
+            <Tab className="btn bg-[#16453D] hover:bg-[#12332E] text-gray-100 font-medium rounded-full px-8 py-3 text-base shadow-lg shadow-[#16453D]/50 transition duration-300 ease-in-out hover:scale-105" style={{ boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}>Drinks</Tab>
           </TabList>
           <TabPanel>
             <OrderTab items={salad}/>
