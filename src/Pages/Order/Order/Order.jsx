@@ -5,6 +5,7 @@ import useMenu from "../../../Hooks/useMenu";
 import FoodCard from "../../../Components/FoodCard/FoodCard";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import OrderTab from "../OrderTab/OrderTab";
 
 const Order = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -28,50 +29,26 @@ const Order = () => {
       }}>
         <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList className="flex justify-center gap-2 mb-7">
-            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition duration-300 ease-in-out filter backdrop-blur-md">Salad</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition duration-300 ease-in-out filter backdrop-blur-md">Pizza</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition duration-300 ease-in-out filter backdrop-blur-md">Soup</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition duration-300 ease-in-out filter backdrop-blur-md">Dessert</Tab>
-            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition duration-300 ease-in-out filter backdrop-blur-md">Drinks</Tab>
+            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg transition duration-300 ease-in-out filter backdrop-blur-md">Salad</Tab>
+            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg transition duration-300 ease-in-out filter backdrop-blur-md">Pizza</Tab>
+            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg transition duration-300 ease-in-out filter backdrop-blur-md">Soup</Tab>
+            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg transition duration-300 ease-in-out filter backdrop-blur-md">Dessert</Tab>
+            <Tab className="px-6 py-3 rounded-full bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-300 font-semibold shadow-lg transition duration-300 ease-in-out filter backdrop-blur-md">Drinks</Tab>
           </TabList>
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {salad.length === 0 ? (
-                <p className="text-center text-2xl font-bold">No item available</p>
-              ) : (
-                salad.map((item) => <FoodCard key={item._id} item={item} />)
-              )}
-            </div>
+            <OrderTab items={salad}/>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {pizza.length === 0 ? (
-                <p className="text-center text-2xl font-bold">No item available</p>
-              ) : (
-                pizza.map((item) => <FoodCard key={item._id} item={item} />)
-              )}
-            </div>
+            <OrderTab items={pizza}/>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {soup.length === 0 ? (
-                <p className="text-center text-2xl font-bold">No item available</p>
-              ) : (
-                soup.map((item) => <FoodCard key={item._id} item={item} />)
-              )}
-            </div>
+            <OrderTab items={soup}/>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {dessert.length === 0 ? (
-                <p className="text-center text-2xl font-bold">No item available</p>
-              ) : (
-                dessert.map((item) => <FoodCard key={item._id} item={item} />)
-              )}
-            </div>
+            <OrderTab items={dessert}/>
           </TabPanel>
           <TabPanel>
-            <p className="text-center text-2xl font-bold">No item available</p>
+            <OrderTab items={drinks}/>
           </TabPanel>
         </Tabs>
       </div>
