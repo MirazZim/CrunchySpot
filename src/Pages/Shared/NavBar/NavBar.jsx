@@ -19,6 +19,7 @@ const NavBar = () => {
 
       {
         user ? <>
+        
           <li><Link onClick={handleLogOut} to="/login">Logout</Link></li>
         </> : <>
           <li><Link to="/login">Login</Link></li>
@@ -64,7 +65,7 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+        <span>{user?.displayName}</span>
         </div>
       </div>
     </>

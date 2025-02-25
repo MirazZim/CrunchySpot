@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const {
@@ -18,19 +18,26 @@ const SignUp = () => {
     const onSubmit = (data) => {
         console.log(data)
         createUser(data.email, data.password)
-        .then(result => {
-            const loggedUser = result.user; 
-            console.log(loggedUser);
-            reset();
-            navigate("/");
-            Swal.fire({
-                title: "Sweet! you have signed up successfully",
-                imageUrl: Cupcake_SignUP,
-                imageWidth: 400,
-                imageHeight: 400,   
-                imageAlt: "Custom image"
-              });
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        console.log("Profile updated");
+                        reset();
+
+                        Swal.fire({
+                            title: "Sweet! you have signed up successfully",
+                            imageUrl: Cupcake_SignUP,
+                            imageWidth: 400,
+                            imageHeight: 400,
+                            imageAlt: "Custom image"
+                        });
+                        navigate("/");
+                    })
+                    .catch((error) => console.log(error));
+
+            })
     }
 
     return (
@@ -51,6 +58,13 @@ const SignUp = () => {
                             <label className="block text-gray-700 font-medium">Full Name</label>
                             <input type="text" {...register("name", { required: true })} name="name" placeholder="Full Name" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                             {errors.name && <span className="text-red-500 text-sm">Name is required</span>}
+                        </div>
+
+                        {/* Photo Url */}
+                        <div>
+                            <label className="block text-gray-700 font-medium">Photo Url</label>
+                            <input type="text" {...register("photoURL", { required: true })} name="photoURL" placeholder="Photo Url" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                            {errors.photoURL && <span className="text-red-500 text-sm">Photo Url is required</span>}
                         </div>
 
                         {/* Email */}
