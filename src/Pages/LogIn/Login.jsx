@@ -1,106 +1,85 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
+import { AuthContext } from "../../Providers/AuthProvider";
+
+import LoginIllustration from "../../assets/others/authentication2.png";
 
 const Login = () => {
     const captchaRef = useRef(null);
     const [disabled, setDisabled] = useState(true);
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        const Lakar = { email, password };
-        console.log(Lakar);
-    };
+    const { logIn } = useContext(AuthContext);
 
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, []);
 
-    const handleValidateCaptcha = (e) => {
-        e.preventDefault(); // Prevent form submission when validating captcha
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        logIn(email, password)
+            .then(result => {
+                console.log(result.user);
+            });
+    };
+
+    const handleValidateCaptcha = () => {
         const user_captcha_value = captchaRef.current.value;
-        if (validateCaptcha(user_captcha_value)) {
-            setDisabled(false);
-        } else {
-            setDisabled(true);
-        }
+        setDisabled(!validateCaptcha(user_captcha_value));
     };
 
     return (
-        <div className="hero min-h-screen bg-white">
-            <div className="hero-content flex">
-                <div className="text-center md:w-1/2 lg:text-left">
-                    <h1 className="text-5xl font-bold">Login now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+        <div className="min-h-screen flex items-center justify-center g-gradient-to-r from-gray-50 via-yellow-50 to-gray-200 p-6">
+            <div className="w-full max-w-3xl bg-yellow-50 shadow-xl rounded-lg p-8 flex flex-col md:flex-row">
+                {/* Illustration */}
+                <div className="hidden md:flex md:w-1/2 items-center justify-center">
+                    <img src={LoginIllustration} alt="Login Illustration" className="w-full h-auto object-cover" />
                 </div>
-                <div className="card md:w-1/2 max-w-sm shadow-2xl bg-slate-100">
-                    <form onSubmit={handleSubmit} className="card-body">
+
+                {/* Login Form */}
+                <div className="md:w-1/2 w-full p-6">
+                    <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">Sign In</h2>
+                    <form onSubmit={handleSubmit} className="space-y-4">
                         {/* Email */}
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="example@domain.com"
-                                className="input input-bordered input-primary rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                            />
+                        <div>
+                            <label className="block text-gray-700 font-medium">Email</label>
+                            <input type="email" name="email" placeholder="Enter your email" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" required />
                         </div>
 
                         {/* Password */}
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="********"
-                                className="input input-bordered rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                            />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                        <div>
+                            <label className="block text-gray-700 font-medium">Password</label>
+                            <input type="password" name="password" placeholder="Enter your password" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" required />
                         </div>
 
                         {/* Captcha */}
-                        <div className="form-control">
-                            <label className="label">
-                                <LoadCanvasTemplate />
-                            </label>
-                            <input
-                                ref={captchaRef}
-                                type="text"
-                                name="captcha"
-                                placeholder="Type the captcha above"
-                                className="input input-bordered"
-                            />
-                            <button
-                                onClick={handleValidateCaptcha}
-                                className="btn btn-ghost mt-3 btn-xs"
-                            >
-                                Validate Captcha
-                            </button>
+                        <div>
+                            <LoadCanvasTemplate />
+                            <div className="flex items-center gap-2 mt-2">
+                                <input ref={captchaRef} type="text" placeholder="Enter Captcha" className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                                <button type="button" onClick={handleValidateCaptcha} className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    Validate
+                                </button>
+                            </div>
                         </div>
 
-                        {/* Login Button */}
-                        <div className="form-control mt-6">
-                            <input
-                                disabled={disabled}
-                                className="btn btn-primary"
-                                type="submit"
-                                value="Login"
-                            />
-                        </div>
+                        {/* Submit Button */}
+                        <button type="submit" disabled={disabled} className="w-full bg-blue-600 text-white p-3 rounded-lg text-lg font-semibold transition duration-300 ease-in-out hover:bg-blue-700 disabled:bg-gray-400">Sign In</button>
                     </form>
-                    <p className="px-6">
-                        <small>New Here? <Link to="/signup">Create an account</Link></small>
+
+                    {/* Register Link */}
+                    <p className="text-center mt-4 text-gray-600">
+                        <Link to="/signup" className="text-blue-600 hover:underline">New here? Create an Account</Link>
                     </p>
+
+                    {/* Social Login */}
+                    <p className="text-center mt-4 text-gray-500">Or login with</p>
+                    <div className="flex justify-center space-x-4 mt-3">
+                        <button className="flex items-center justify-center w-1/2 py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-100 transition shadow-sm">Google</button>
+                        <button className="flex items-center justify-center w-1/2 py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-100 transition shadow-sm">GitHub</button>
+                    </div>
                 </div>
             </div>
         </div>
