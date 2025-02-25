@@ -1,14 +1,17 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
-import { AuthContext } from "../../Providers/AuthProvider";
+import { AuthContext } from "../../Providers/AuthProvider";     
+import Cupcake from "../../assets/others/login.jpg";
 
 import LoginIllustration from "../../assets/others/authentication2.png";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const captchaRef = useRef(null);
     const [disabled, setDisabled] = useState(true);
     const { logIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -22,6 +25,14 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 console.log(result.user);
+                navigate("/");
+                Swal.fire({
+                    title: "Sweet! you have logged in successfully",
+                    imageUrl: Cupcake,
+                    imageWidth: 400,
+                    imageHeight: 400,   
+                    imageAlt: "Custom image"
+                  });
             });
     };
 

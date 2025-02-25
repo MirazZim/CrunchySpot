@@ -3,10 +3,14 @@ import LoginIllustration from "../../assets/others/authentication2.png";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
+import Cupcake_SignUP from "../../assets/others/signup.jpg";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
 
     const { createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const {
         register, handleSubmit, formState: { errors }, reset, } = useForm();
@@ -18,6 +22,14 @@ const SignUp = () => {
             const loggedUser = result.user; 
             console.log(loggedUser);
             reset();
+            navigate("/");
+            Swal.fire({
+                title: "Sweet! you have signed up successfully",
+                imageUrl: Cupcake_SignUP,
+                imageWidth: 400,
+                imageHeight: 400,   
+                imageAlt: "Custom image"
+              });
         })
     }
 
