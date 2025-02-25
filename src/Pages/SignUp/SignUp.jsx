@@ -1,7 +1,26 @@
 import { Link } from "react-router-dom";
 import LoginIllustration from "../../assets/others/authentication2.png";
+import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const SignUp = () => {
+
+    const { createUser } = useContext(AuthContext);
+
+    const {
+        register, handleSubmit, formState: { errors }, reset, } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data)
+        createUser(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user; 
+            console.log(loggedUser);
+            reset();
+        })
+    }
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-gray-50 via-yellow-50 to-gray-200 p-6">
             <div className="w-full max-w-3xl bg-yellow-50 shadow-xl rounded-lg p-8 flex flex-col md:flex-row">
@@ -14,27 +33,47 @@ const SignUp = () => {
                 <div className="md:w-1/2 w-full p-6">
                     <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">Sign Up</h2>
                     <p className="text-gray-500 text-sm text-center mb-4">Create an account to get started</p>
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                         {/* Full Name */}
                         <div>
                             <label className="block text-gray-700 font-medium">Full Name</label>
-                            <input type="text" name="name" placeholder="Full Name" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" required />
+                            <input type="text" {...register("name", { required: true })} name="name" placeholder="Full Name" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                            {errors.name && <span className="text-red-500 text-sm">Name is required</span>}
                         </div>
 
                         {/* Email */}
                         <div>
                             <label className="block text-gray-700 font-medium">Email Address</label>
-                            <input type="email" name="email" placeholder="example@mail.com" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" required />
+                            <input type="email" {...register("email", { required: true })} name="email" placeholder="example@mail.com" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                            {errors.email && <span className="text-red-500 text-sm">Email is required</span>}
                         </div>
 
                         {/* Password */}
                         <div>
                             <label className="block text-gray-700 font-medium">Password</label>
-                            <input type="password" name="password" placeholder="••••••••" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" required />
+                            <input type="password" {...register("password", {
+                                required: true,
+                                minLength: 6,
+                                maxLength: 20,
+                                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/
+
+                            })} name="password" placeholder="••••••••" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+
+
+                            {errors.password?.type === 'required' && <span className="text-red-500 text-sm">Password is required</span>}
+
+                            {errors.password?.type === 'minLength' && <span className="text-red-500 text-sm">Password must be at least 6 characters</span>}
+
+                            {errors.password?.type === 'maxLength' && <span className="text-red-500 text-sm">Password must be less than 20 characters</span>}
+
+                            {errors.password?.type === 'pattern' && <span className="text-red-500 text-sm">Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character</span>}
+
+
                         </div>
 
                         {/* Submit Button */}
-                        <button className="w-full bg-blue-600 text-white p-3 rounded-lg text-lg font-semibold transition duration-300 ease-in-out hover:bg-blue-700">Sign Up</button>
+                        <input type="submit" className="w-full bg-blue-600 text-white p-3 rounded-lg text-lg font-semibold transition duration-300 ease-in-out hover:bg-blue-700" value="Sign Up" />
+
                     </form>
 
                     {/* Login Link */}
