@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { TiShoppingCart } from "react-icons/ti";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => console.log(error));
   };
 
@@ -16,15 +17,19 @@ const NavBar = () => {
       <li><Link to="/">Home</Link></li>
       <li><Link to="/menu">Menu</Link></li>
       <li><Link to="/order/salad">Order Food</Link></li>
+      <li><Link to="/">
+        <TiShoppingCart />
+        <div className="badge badge-secondary">+99</div>
+      </Link></li>
 
       {
         user ? <>
-        
+
           <li><Link onClick={handleLogOut} to="/login">Logout</Link></li>
         </> : <>
           <li><Link to="/login">Login</Link></li>
         </>
-      } 
+      }
     </>
 
   )
@@ -65,7 +70,11 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-        <span>{user?.displayName}</span>
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <li><button onClick={handleLogOut}>Log Out</button></li>
+            </label>
+          </div>
         </div>
       </div>
     </>
