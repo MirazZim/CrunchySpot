@@ -1,4 +1,4 @@
-import { FaAd, FaCalendar, FaHome, FaList, FaPaypal, FaShoppingCart } from "react-icons/fa"
+import { FaAd, FaCalendar, FaHome, FaList, FaPaypal, FaShoppingCart, FaUtensils } from "react-icons/fa"
 import { NavLink, Outlet } from "react-router-dom"
 
 
@@ -81,6 +81,43 @@ const Dashboard = () => {
                         }
                     >
                         <FaList className="mr-3 text-lg text-black" /> My Bookings
+                    </NavLink>
+
+                    <div className="divider"></div>
+
+                    {/* Add More Links */}
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            (isActive
+                                ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                : "hover:bg-gradient-to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                            " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                        }
+                    >
+                        <FaHome className="mr-3 text-lg text-black" /> My Home
+                    </NavLink>
+                    <NavLink
+                        to="/order/salad"
+                        className={({ isActive }) =>
+                            (isActive
+                                ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                : "hover:bg-gradient-to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                            " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                        }
+                    >
+                        <FaShoppingCart className="mr-3 text-lg text-black" /> My Order
+                    </NavLink>
+                    <NavLink
+                        to="/menu"
+                        className={({ isActive }) =>
+                            (isActive
+                                ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                : "hover:bg-gradient-to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                            " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                        }
+                    >
+                        <FaUtensils className="mr-3 text-lg text-black" /> My Menu
                     </NavLink>
                 </nav>
             </div>
