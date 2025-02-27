@@ -1,8 +1,10 @@
 import { FaAd, FaCalendar, FaHome, FaList, FaPaypal, FaShoppingCart, FaUtensils } from "react-icons/fa"
 import { NavLink, Outlet } from "react-router-dom"
+import UseCart from "../Hooks/UseCart"
 
 
 const Dashboard = () => {
+    const [cart] = UseCart();
     return (
         /* Dashboard SideBar */
         <div className="flex h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
@@ -56,7 +58,7 @@ const Dashboard = () => {
                             " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
                         }
                     >
-                        <FaShoppingCart className="mr-3 text-lg text-black" /> My Cart   
+                        <FaShoppingCart className="mr-3 text-lg text-black" /> My Cart  ({cart.length})
                     </NavLink>
 
                     <NavLink
