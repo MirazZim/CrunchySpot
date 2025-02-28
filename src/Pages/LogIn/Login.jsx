@@ -6,6 +6,7 @@ import Cupcake from "../../assets/others/login.jpg";
 
 import LoginIllustration from "../../assets/others/authentication2.png";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Login = () => {
     const captchaRef = useRef(null);
@@ -93,10 +94,7 @@ const Login = () => {
 
                     {/* Social Login */}
                     <p className="text-center mt-4 text-gray-500">Or login with</p>
-                    <div className="flex justify-center space-x-4 mt-3">
-                        <button className="flex items-center justify-center w-1/2 py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-100 transition shadow-sm">Google</button>
-                        <button className="flex items-center justify-center w-1/2 py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-100 transition shadow-sm">GitHub</button>
-                    </div>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

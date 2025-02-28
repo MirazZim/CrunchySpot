@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import Cupcake_SignUP from "../../assets/others/signup.jpg";
 import { useNavigate } from "react-router-dom";
 import useAxiosOpenForAll from "../../Hooks/useAxiosOpenForAll";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
     const axiosOpenForAll  = useAxiosOpenForAll();
@@ -123,10 +124,8 @@ const SignUp = () => {
 
                     {/* Social Login */}
                     <p className="text-center mt-4 text-gray-500">Or sign up with</p>
-                    <div className="flex justify-center space-x-4 mt-3">
-                        <button className="flex items-center justify-center w-1/2 py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-100 transition shadow-sm">Google</button>
-                        <button className="flex items-center justify-center w-1/2 py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-100 transition shadow-sm">GitHub</button>
-                    </div>
+                    
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>
