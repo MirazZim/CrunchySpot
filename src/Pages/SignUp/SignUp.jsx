@@ -6,8 +6,10 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import Cupcake_SignUP from "../../assets/others/signup.jpg";
 import { useNavigate } from "react-router-dom";
+import useAxiosOpenForAll from "../../Hooks/useAxiosOpenForAll";
 
 const SignUp = () => {
+    const axiosOpenForAll  = useAxiosOpenForAll();
 
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -16,24 +18,36 @@ const SignUp = () => {
         register, handleSubmit, formState: { errors }, reset, } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data)
+        
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        console.log("Profile updated");
-                        reset();
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                               
+                        }
 
-                        Swal.fire({
-                            title: "Sweet! you have signed up successfully",
-                            imageUrl: Cupcake_SignUP,
-                            imageWidth: 400,
-                            imageHeight: 400,
-                            imageAlt: "Custom image"
-                        });
-                        navigate("/");
+                        axiosOpenForAll.post("/users", userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database');
+                                    reset();
+
+                                    Swal.fire({
+                                        title: "Sweet! you have signed up successfully",
+                                        imageUrl: Cupcake_SignUP,
+                                        imageWidth: 400,
+                                        imageHeight: 400,
+                                        imageAlt: "Custom image"
+                                    });
+                                    navigate("/");
+                                }   
+                            })
+                       
                     })
                     .catch((error) => console.log(error));
 
