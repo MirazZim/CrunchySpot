@@ -1,15 +1,31 @@
 import  { useContext } from 'react'
 import { FaGoogle, FaGithub } from 'react-icons/fa'
 import { AuthContext } from '../../Providers/AuthProvider'
+import useAxiosOpenForAll from '../../Hooks/useAxiosOpenForAll';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
     const { signInWithGoogle } = useContext(AuthContext);
+    const axiosOpenForAll = useAxiosOpenForAll();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then(result => {
                 const user = result.user;
                 console.log(user);
+
+                const userInfo = {
+                    email: user?.email,
+                    name: user?.displayName,
+                }
+                axiosOpenForAll.post("/users", userInfo)
+                    .then(res => {
+                        if (res.data) {
+                            navigate(location?.state?.from || "/");
+                        }
+                    })
             })
     }
 
