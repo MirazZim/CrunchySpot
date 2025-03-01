@@ -1,94 +1,99 @@
-import { createContext, useEffect, useState } from "react"
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth"
-import { app } from "../Firebase/firebase.config"
-import useAxiosSecure from "../Hooks/useAxiosSecure"
-import useAxiosOpenForAll from "../Hooks/useAxiosOpenForAll"
+import { createContext, useEffect, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+import { app } from "../Firebase/firebase.config";
+import useAxiosOpenForAll from "../Hooks/useAxiosOpenForAll";
 
+export const AuthContext = createContext(null);
+const auth = getAuth(app);
 
-export const AuthContext = createContext(null)
-const auth = getAuth(app)
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const axiosOpenForAll = useAxiosOpenForAll(); // ✅ Keep only this, remove useAxiosSecure
 
-    const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const axiosSecure = useAxiosSecure()
-    const axiosOpenForAll = useAxiosOpenForAll()
+  //---------------------------------------------//
 
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-    //---------------------------------------------//
+  const logIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-    const createUser = (email, password) => {
-        setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth).then(() => {
+      localStorage.removeItem("access-token"); // ✅ Ensure token is removed after logout
+    });
+  };
 
-    const logIn = (email, password) => {
-        setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password)
-    }
-   
-    const logOut = () => {
-        setLoading(true);
-        return signOut(auth)
-    }
-    
-    const updateUserProfile = (name, photo) => {
-        return  updateProfile(auth.currentUser, {
-            displayName: name, photoURL: photo
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
+  };
+
+  const googleProvider = new GoogleAuthProvider();
+  const signInWithGoogle = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
+
+  //---------------------------------------------//
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+
+      if (currentUser) {
+        // Get token and store it
+        const userInfo = {
+          email: currentUser?.email,
+          name: currentUser?.displayName,
+        };
+
+        axiosOpenForAll
+          .post("/jwt", userInfo)
+          .then((res) => {
+            if (res.data.token) {
+              localStorage.setItem("access-token", res.data.token);
+            }
           })
-    }
+          .catch((error) => {
+            console.error("JWT Token fetch failed", error);
+          });
+      } else {
+        localStorage.removeItem("access-token"); // ✅ Ensure token is removed on logout
+      }
+      setLoading(false);
+    });
 
-    const googleProvider = new GoogleAuthProvider()
-    const signInWithGoogle = () => {
-        setLoading(true);
-        return signInWithPopup(auth, googleProvider)
-    }
+    return () => unsubscribe();
+  }, [axiosOpenForAll]);
 
+  const authInfo = {
+    user,
+    loading,
+    createUser,
+    logIn,
+    logOut,
+    updateUserProfile,
+    signInWithGoogle,
+  };
 
-    //---------------------------------------------//
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-            // console.log('currentUser',currentUser);
-            if(currentUser){
-              //get token and store client     
-              const userInfo = {
-                email: currentUser?.email,
-                name: currentUser?.displayName,
-              }
-              axiosOpenForAll.post('/jwt', userInfo)
-              .then(res => {
-                  if(res.data.token){
-                      localStorage.setItem('access-token', res.data.token)
-                  }
-              })
-            }
-            else {
-              //TODO: remove token (if token exists)
-              localStorage.removeItem('access-token');
-            }
-            setLoading(false)
-        })
-        return () => unsubscribe(); 
-    }, [axiosOpenForAll])
+  return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
+};
 
-    const authInfo = {
-        user,
-        loading,
-        createUser,
-        logIn,
-        logOut,
-        updateUserProfile,
-        signInWithGoogle,
-        
-    }
-
-  return (
-    <AuthContext.Provider value={authInfo}>
-        {children}  
-    </AuthContext.Provider>
-    
-  )
-}
-
-export default AuthProvider
+export default AuthProvider;

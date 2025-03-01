@@ -1,21 +1,26 @@
-import { useContext } from "react"
-import { AuthContext } from "../Providers/AuthProvider"
-import { Navigate, useLocation } from "react-router-dom"
+import { useContext } from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
+const PrivateRoute = ({ children }) => {
+    const auth = useContext(AuthContext); // ✅ Check if AuthContext is null
+    const location = useLocation();
 
-const PrivateRoute = ({ children }) => {    
-    const { user, loading } = useContext(AuthContext)
-
-    const location = useLocation()
-
-
-    if(loading){
-        return <progress className="progress w-56"></progress>
+    if (!auth) {
+        return <p>Loading...</p>; // ✅ Show a fallback instead of breaking
     }
-    if(user){
-        return children
+
+    const { user, loading } = auth;
+
+    if (loading) {
+        return <p>Loading...</p>;
     }
-  return <Navigate to="/login" state={{ from: location }} replace></Navigate>
-}
+
+    if (!user) {
+        return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+
+    return children;
+};
 
 export default PrivateRoute;
