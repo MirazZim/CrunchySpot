@@ -7,7 +7,7 @@ const useAdmin = () => {
   const { user } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
 
-  const { data: isAdmin, isLoading, error } = useQuery({
+  const { data: isAdmin, isLoading: isAdminLoading, error } = useQuery({
     queryKey: ['isAdmin', user?.email],
     queryFn: async () => {
       if (!user?.email) return false;
@@ -17,7 +17,7 @@ const useAdmin = () => {
     enabled: !!user?.email, // Only run the query if the user email exists
   });
 
-  return [isAdmin, isLoading, error];
+  return [isAdmin, isAdminLoading, error];
 };
 
 export default useAdmin;
