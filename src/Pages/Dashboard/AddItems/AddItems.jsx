@@ -1,12 +1,25 @@
 import { useForm } from "react-hook-form"
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle"
+import { FaUtensils } from "react-icons/fa"
+import useAxiosOpenForAll from "../../../Hooks/useAxiosOpenForAll";
 
+const imageHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const AddItems = () => {
     const { register, handleSubmit } = useForm()
-    const onSubmit = (data) => {
+    const axiosOpenForAll  = useAxiosOpenForAll();
+    const onSubmit = async (data) => {
         console.log(data)
-       }
+        // image upload to img bb and then get an url
+        const imageFile = { image: data.image[0] }
+        const res = await axiosOpenForAll.post(imageHostingApi, imageFile, {
+            headers: {
+                "content-type": "multipart/form-data",
+            },
+        })
+        console.log(res.data)
+    }
     return (
         <div>
             <SectionTitle
@@ -26,16 +39,18 @@ const AddItems = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category*</label>
-                            <select id="category" className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-[#16453D] focus:outline-none bg-white" required {...register("category")}>
+                            <select defaultValue="default" id="category"  className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-[#16453D] focus:outline-none bg-white" required {...register("category")}>
+                                <option disabled value="default">Select a category</option>
                                 <option value="pizza">Pizza</option>
                                 <option value="salad">Salad</option>
                                 <option value="soup">Soup</option>
                                 <option value="dessert">Dessert</option>
+                                <option value="drinks">Drinks</option>
                             </select>
                         </div>
                         <div>
                             <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price*</label>
-                            <input type="number" id="price" className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-[#16453D] focus:outline-none bg-white" placeholder="Enter price" required {...register("price")} />
+                            <input type="number" id="price" className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-[#16453D] focus:outline-none bg-white" placeholder="Enter price" required {...register("price")} />        
                         </div>
                     </div>
 
@@ -51,7 +66,8 @@ const AddItems = () => {
                     </div>
 
                     {/* add recipe  */}
-                    <button type="submit" className="w-full bg-[#16453D] text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-[#1B4A63] transition-all duration-300">Add Recipe</button>
+                    <button type="submit" className="w-full flex items-center justify-center bg-[#16453D] text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-[#1B4A63] transition-all duration-300">
+                        <FaUtensils className="mr-2" /> Add Recipe</button>
                 </form>
             </div>
 
