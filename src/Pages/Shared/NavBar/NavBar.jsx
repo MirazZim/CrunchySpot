@@ -17,20 +17,20 @@ const NavBar = () => {
 
   const navOptions = (
     <>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/menu">Menu</Link></li>
-      <li><Link to="/order/salad">Order Food</Link></li>
-      <li><Link to="/dashboard/cart">
-        <TiShoppingCart />
-        <div className="badge badge-secondary">+{cart.length || 0}</div>
+      <li className="mr-4"><Link to="/">Home</Link></li>
+      <li className="mr-4"><Link to="/menu">Menu</Link></li>
+      <li className="mr-4"><Link to="/order/salad">Order Food</Link></li>
+      <li className="mr-4"><Link to="/dashboard/cart">
+        <TiShoppingCart className="text-2xl" />
+        <div className="badge badge-secondary ml-2">{cart.length || 0}</div>
       </Link></li>
 
       {
         user ? <>
 
-          <li><Link onClick={handleLogOut} to="/login">Logout</Link></li>
+          <li className="mr-4"><Link onClick={handleLogOut} to="/login">Logout</Link></li>
         </> : <>
-          <li><Link to="/login">Login</Link></li>
+          <li className="mr-4"><Link to="/login">Login</Link></li>
         </>
       }
     </>
@@ -39,7 +39,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar max-w-screen-xl mx-auto fixed z-10 bg-opacity-25 bg-black text-white">
+      <div className="navbar max-w-screen-xl mx-auto fixed z-10 bg-black bg-opacity-30 backdrop-blur-md rounded-xl text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -60,24 +60,17 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-black bg-opacity-30 backdrop-blur-md rounded-xl z-[1] mt-3 w-52 p-2 shadow"
             >
               {navOptions}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost text-xl">CrunchySpot</Link>
+          <Link to="/" className="btn btn-ghost text-2xl">CrunchySpot</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             {navOptions}
           </ul>
-        </div>
-        <div className="navbar-end">
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <li><button onClick={handleLogOut}>Log Out</button></li>
-            </label>
-          </div>
         </div>
       </div>
     </>
