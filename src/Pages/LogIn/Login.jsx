@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
 import { AuthContext } from "../../Providers/AuthProvider";     
 import Cupcake from "../../assets/others/login.jpg";
@@ -50,14 +51,22 @@ const Login = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center g-gradient-to-r from-gray-50 via-yellow-50 to-gray-200 p-6">
-            <div className="w-full max-w-3xl bg-yellow-50 shadow-xl rounded-lg p-8 flex flex-col md:flex-row">
+            <div className="w-full max-w-3xl bg-yellow-50 shadow-xl rounded-lg p-8 flex flex-col md:flex-row relative">
+                {/* Back to home button - moved to the top-left of the login card */}
+                <div className="absolute top-4 left-4">
+                    <Link to="/" className="flex items-center text-gray-700 hover:text-blue-600 transition duration-300">
+                        <FaHome className="mr-2 text-lg" />
+                        <span className="text-gray-700 hover:text-blue-600 transition duration-300">Back to Home</span>
+                    </Link>
+                </div>
+
                 {/* Illustration */}
-                <div className="hidden md:flex md:w-1/2 items-center justify-center">
+                <div className="hidden md:flex md:w-1/2 items-center justify-center mt-8">
                     <img src={LoginIllustration} alt="Login Illustration" className="w-full h-auto object-cover" />
                 </div>
 
                 {/* Login Form */}
-                <div className="md:w-1/2 w-full p-6">
+                <div className="md:w-1/2 w-full p-6 mt-8">
                     <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">Sign In</h2>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {/* Email */}
