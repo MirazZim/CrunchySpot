@@ -6,7 +6,7 @@ import Testimonials from "../Testimonials/Testimonials";
 
 const Home = () => {
     return (
-        <div>
+        <div className="w-full">
             <Banner />
               <Category />
             <PopularMenu />
