@@ -15,8 +15,16 @@ const manageItems = () => {
     
     const initialIndex = categories.indexOf(category) >= 0 ? categories.indexOf(category) : 0;
     const [tabIndex, setTabIndex] = useState(initialIndex);
-    const [menu] = useMenu();
+    const [menu, loading, refetch] = useMenu();
+    const [localMenu, setLocalMenu] = useState([]);
   
+    // Update localMenu when menu changes
+    useEffect(() => {
+      if (menu && menu.length > 0) {
+        setLocalMenu([...menu]);
+      }
+    }, [menu]);
+
     // Add useEffect to handle URL changes
     useEffect(() => {
       const categoryIndex = categories.indexOf(category);
@@ -27,14 +35,23 @@ const manageItems = () => {
   
     const handleTabSelect = (index) => {
       setTabIndex(index);
+    };
+
+    const handleDeleteItem = (deletedItemId) => {
+      // Update local state immediately for a responsive UI
+      setLocalMenu(prevMenu => prevMenu.filter(item => item._id !== deletedItemId));
       
+      // Refetch the menu data from the server
+      refetch();
     };
   
-    const salad = menu.filter((item) => item.category === "salad");
-    const pizza = menu.filter((item) => item.category === "pizza");
-    const soup = menu.filter((item) => item.category === "soup");
-    const dessert = menu.filter((item) => item.category === "dessert");
-    const drinks = menu.filter((item) => item.category === "drinks");
+    // Filter using localMenu instead of menu
+    const salad = localMenu.filter((item) => item.category === "salad");
+    const pizza = localMenu.filter((item) => item.category === "pizza");
+    const soup = localMenu.filter((item) => item.category === "soup");
+    const dessert = localMenu.filter((item) => item.category === "dessert");
+    const drinks = localMenu.filter((item) => item.category === "drinks");
+  
   return (
     <div>
         <SectionTitle heading="Manage Items" subHeading="Please Check" />
@@ -56,19 +73,19 @@ const manageItems = () => {
             <Tab className="btn bg-[#16453D] hover:bg-[#12332E] text-gray-100 font-medium rounded-full px-8 py-3 text-base shadow-lg shadow-[#16453D]/50 transition duration-300 ease-in-out hover:scale-105" style={{ boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}>Drinks</Tab>
           </TabList>
           <TabPanel>
-            <OrderTabForAdmin items={salad}/>
+            <OrderTabForAdmin items={salad} onDeleteItem={handleDeleteItem} />
           </TabPanel>
           <TabPanel>
-            <OrderTabForAdmin items={pizza}/>
+            <OrderTabForAdmin items={pizza} onDeleteItem={handleDeleteItem} />
           </TabPanel>
           <TabPanel>
-            <OrderTabForAdmin items={soup}/>
+            <OrderTabForAdmin items={soup} onDeleteItem={handleDeleteItem} />
           </TabPanel>
           <TabPanel>
-            <OrderTabForAdmin items={dessert}/>
+            <OrderTabForAdmin items={dessert} onDeleteItem={handleDeleteItem} />
           </TabPanel>
           <TabPanel>
-            <OrderTabForAdmin items={drinks}/>
+            <OrderTabForAdmin items={drinks} onDeleteItem={handleDeleteItem} />
           </TabPanel>
         </Tabs>
       </div>

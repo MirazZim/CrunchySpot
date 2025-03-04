@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useMenu from "../../Hooks/useMenu";
 
-const FoodCardForAdmin = ({ item }) => {
+const FoodCardForAdmin = ({ item, onDelete }) => {
   const { name, recipe, image, price, _id } = item;
 
   const {user} = useContext(AuthContext);
@@ -31,23 +31,36 @@ const FoodCardForAdmin = ({ item }) => {
       confirmButtonText: 'Yes, delete it!'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await axiosSecure.delete(`/menu/${_id}`)
-        console.log(res.data)
-        if (res.data.deletedCount > 0) {
-          
-          Swal.fire(
-            {
+        try {
+          const res = await axiosSecure.delete(`/menu/${_id}`);
+          console.log(res.data);
+          if (res.data.deletedCount > 0) {
+            // Call the parent component's onDelete callback instead of refetch
+            if (onDelete) {
+              onDelete(_id);
+            }
+            
+            Swal.fire({
               position: 'top-end',
-              icon: 'success' ,
+              icon: 'success',
               title: `${name} deleted successfully`,
               showConfirmButton: false,
               timer: 1500
-            }
-          )
+            });
+          }
+        } catch (error) {
+          console.error("Error deleting item:", error);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: `Failed to delete ${name}`,
+            text: 'Please try again or check your authorization',
+            showConfirmButton: false,
+            timer: 2000
+          });
         }
-        
       }
-    })
+    });
   }
 
   return (
