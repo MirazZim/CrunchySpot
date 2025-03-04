@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useMenu from "../../Hooks/useMenu";
@@ -41,11 +41,10 @@ const FoodCardForAdmin = ({ item, onDelete }) => {
             }
             
             Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: `${name} deleted successfully`,
-              showConfirmButton: false,
-              timer: 1500
+              title: ` ${name} added to cart`,
+              text: "Go to cart to complete the order",
+              icon: "success",
+              confirmButtonText: "OK"
             });
           }
         } catch (error) {
@@ -76,11 +75,13 @@ const FoodCardForAdmin = ({ item, onDelete }) => {
       </div>
       <div className="w-full h-[1px] bg-gray-300 my-4"></div>
       <div className="flex space-x-4">
+        <Link to = {`/dashboard/updateItem/${_id}`}>
         <button 
         onClick={handleUpdate}
         className="bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition duration-150 ease-in-out">
           Update
         </button>
+        </Link>
         <button 
         onClick={handleDelete}
         className="bg-red-600 text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition duration-150 ease-in-out">
