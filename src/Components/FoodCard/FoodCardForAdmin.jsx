@@ -14,7 +14,7 @@ const FoodCardForAdmin = ({ item }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [axiosSecure] = useAxiosSecure();
-  const [menu,loading, refetch] = useMenu();
+  
 
   const handleUpdate = () => {
     navigate(`/update/${_id}`, { state: { from: location.pathname } });
@@ -34,7 +34,7 @@ const FoodCardForAdmin = ({ item }) => {
         const res = await axiosSecure.delete(`/menu/${_id}`)
         console.log(res.data)
         if (res.data.deletedCount > 0) {
-          refetch();
+          
           Swal.fire(
             {
               position: 'top-end',
