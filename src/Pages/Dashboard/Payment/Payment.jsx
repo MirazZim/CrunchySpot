@@ -2,10 +2,10 @@ import React from 'react'
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js';
-
+import CheckoutForm from './CheckoutForm';
 
 //TODO: add publishable key
-const stripePromise = loadStripe('');
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY);
 const Payment = () => {
   return (
     <div>
@@ -17,8 +17,7 @@ const Payment = () => {
 
         <div>
             <Elements stripe={stripePromise}>
-                
-                
+                <CheckoutForm />
             </Elements>
         </div>
 
