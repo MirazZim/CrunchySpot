@@ -1,11 +1,29 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { useState }from 'react'
+import { useContext, useEffect, useState }from 'react'
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import UseCart from '../../../Hooks/UseCart';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
     const elements  = useElements();
-     const [error , setError] = useState(null);
-     const [success , setSuccess] = useState(null);
+     const [error , setError] = useState();
+     const [transactionId, setTransectioId] = useState('');
+     const [success , setSuccess] = useState();
+     const [axiosSecure] = useAxiosSecure();
+     const [cart] = UseCart();
+     const {user} = useContext(AuthContext);
+     const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+
+     const [clientSecret, setClientSecret] = useState('');
+
+     useEffect( () => {
+        axiosSecure.post('/create-payment-intent', {price: totalPrice})
+        .then(res => {
+            // console.log(res.data.clientSecret);
+            setClientSecret(res.data.clientSecret);
+        })  
+     },[axiosSecure, totalPrice])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -35,6 +53,35 @@ const CheckoutForm = () => {
             setSuccess('Payment Method Successfully done !')
           }
 
+          //confirm payment
+          const {error : confirmError, paymentIntent} = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+              payment_method: {
+                card: card,
+                billing_details: {
+                  name: user?.displayName || 'anonymous',
+                  email: user?.email || 'anonymous',
+                },
+              },    
+            },
+          );
+
+          if (confirmError) {
+            console.log('payment error', confirmError);
+            setError(confirmError.message)
+          } else {
+            console.log('payment intent', paymentIntent);
+            if(paymentIntent.status === 'succeeded') {
+                //TODO: 
+                console.log('transaction id', paymentIntent.id);
+                setTransectioId(paymentIntent.id);
+                setSuccess('Payment Method Successfully done !')
+            }
+            setError(null)
+            setSuccess('Payment Method Successfully done !')
+          }
+
     }
   return (
     <form onSubmit={handleSubmit}>
@@ -54,11 +101,12 @@ const CheckoutForm = () => {
           },
         }}
       />
-      <button className='btn my-4 btn-primary rounded-full border-0 w-full md:w-auto px-8 py-4' type="submit" disabled={!stripe}>
+      <button className='btn my-4 btn-primary rounded-full border-0 w-full md:w-auto px-8 py-4' type="submit" disabled={!stripe || !clientSecret}>
         Pay
       </button>
       {error && <p className='text-red-500'>{error}</p>}
       {success && <p className='text-green-500'>{success}</p>}
+      {transactionId && <p className='text-blue-500'>Transaction ID: {transactionId}</p>}
 
     </form>
   )
