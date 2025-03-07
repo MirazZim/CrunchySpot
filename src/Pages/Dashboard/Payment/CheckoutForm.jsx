@@ -126,6 +126,13 @@ const CheckoutForm = () => {
               '::placeholder': {
                 color: '#aab7c4',
               },
+              padding: '10px',
+              borderRadius: '5px',
+              boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+              border: '1px solid #aab7c4',
+              ':focus': {
+                borderColor: '#424770',
+              },
             },
             invalid: {
               color: '#9e2146',

@@ -107,17 +107,7 @@ const Dashboard = () => {
                                     <FaHome className="mr-3 text-lg text-black" /> User Home
                                 </NavLink>
 
-                                <NavLink
-                                    to="/dashboard/reservation"
-                                    className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }
-                                >
-                                    <FaCalendar className="mr-3 text-lg text-black" /> Reservation
-                                </NavLink>
+                            
 
                                 <NavLink
                                     to="/dashboard/payment"
@@ -154,29 +144,9 @@ const Dashboard = () => {
                                     <FaShoppingCart className="mr-3 text-lg text-black" /> My Cart  ({cart.length})
                                 </NavLink>
 
-                                <NavLink
-                                    to="/dashboard/review"
-                                    className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }
-                                >
-                                    <FaAd className="mr-3 text-lg text-black" /> Give a Review
-                                </NavLink>
+                                
 
-                                <NavLink
-                                    to="/dashboard/bookings"
-                                    className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }
-                                >
-                                    <FaList className="mr-3 text-lg text-black" /> My Bookings
-                                </NavLink>
+                                
                             </>
                     }
 
