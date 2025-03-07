@@ -130,6 +130,17 @@ const Dashboard = () => {
                                 >
                                     <FaPaypal className="mr-3 text-lg text-black" /> Payment
                                 </NavLink>
+                                <NavLink
+                                    to="/dashboard/paymentHistory"
+                                    className={({ isActive }) =>
+                                        (isActive
+                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                            : "hover:bg-gradient-to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                                    }
+                                >
+                                    <FaPaypal className="mr-3 text-lg text-black" /> Payment History
+                                </NavLink>
 
                                 <NavLink
                                     to="/dashboard/cart"

@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import UseCart from '../../../Hooks/UseCart';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -13,6 +14,7 @@ const CheckoutForm = () => {
      const [success , setSuccess] = useState();
      const [axiosSecure] = useAxiosSecure();
      const [cart, refetch] = UseCart();
+     const navigate = useNavigate();
      const {user} = useContext(AuthContext);
      const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
@@ -102,6 +104,7 @@ const CheckoutForm = () => {
                 text: "Your payment has been processed.",
                 icon: "success"
             });
+            navigate('/dashboard/paymentHistory');
                 
              }
 
