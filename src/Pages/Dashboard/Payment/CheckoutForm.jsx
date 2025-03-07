@@ -77,6 +77,23 @@ const CheckoutForm = () => {
                 console.log('transaction id', paymentIntent.id);
                 setTransectioId(paymentIntent.id);
                 setSuccess('Payment Method Successfully done !')
+
+              //now  save the payment in the database
+              const payment = {
+                email: user?.email || 'anonymous',
+                name: user?.displayName || 'anonymous',
+                transactionId: paymentIntent.id,
+                amount: totalPrice,
+                cartIds: cart.map(item => item._id),
+                menuItemIds: cart.map(item => item.foodId),
+                status: 'pending',
+                date: new Date() //utc date convert.  use moment js
+              }
+
+             const res = await axiosSecure.post('/payments', payment)
+             console.log('payment saved',res)
+
+
             }
             setError(null)
             setSuccess('Payment Method Successfully done !')
