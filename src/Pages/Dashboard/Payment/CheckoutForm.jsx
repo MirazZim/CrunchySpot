@@ -3,6 +3,7 @@ import { useContext, useEffect, useState }from 'react'
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import UseCart from '../../../Hooks/UseCart';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -11,7 +12,7 @@ const CheckoutForm = () => {
      const [transactionId, setTransectioId] = useState('');
      const [success , setSuccess] = useState();
      const [axiosSecure] = useAxiosSecure();
-     const [cart] = UseCart();
+     const [cart, refetch] = UseCart();
      const {user} = useContext(AuthContext);
      const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
@@ -94,6 +95,15 @@ const CheckoutForm = () => {
 
              const res = await axiosSecure.post('/payments', payment)
              console.log('payment saved',res)
+             refetch();
+             if(res.data?.paymentResult.insertedId){
+              Swal.fire({
+                title: "Payment Done!",
+                text: "Your payment has been processed.",
+                icon: "success"
+            });
+                
+             }
 
 
             }
