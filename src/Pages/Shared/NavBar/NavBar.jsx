@@ -3,9 +3,11 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { TiShoppingCart } from "react-icons/ti";
 import UseCart from "../../../Hooks/UseCart";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
 
   const [cart] = UseCart();
 
@@ -24,6 +26,13 @@ const NavBar = () => {
         <TiShoppingCart className="text-2xl" />
         <div className="badge badge-secondary ml-2">{cart.length || 0}</div>
       </Link></li>
+
+      {
+        user && isAdmin && <li className="mr-4"><Link to="/dashboard/AdminHome">Admin Home</Link></li>
+      }
+      {
+        user && !isAdmin && <li className="mr-4"><Link to="/dashboard/UserHome">User Home</Link></li>
+      }
 
       {
         user ? <>

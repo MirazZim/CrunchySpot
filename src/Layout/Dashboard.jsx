@@ -30,7 +30,7 @@ const Dashboard = () => {
                             <>
                                 {/* Admin Dashboard */}
                                 <NavLink
-                                    to="/dashboard/adminHome"
+                                    to="/dashboard/AdminHome"
                                     className={({ isActive }) =>
                                         (isActive
                                             ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
@@ -96,7 +96,7 @@ const Dashboard = () => {
                             /* User Dashboard */
                             <>
                                 <NavLink
-                                    to="/dashboard/userHome"
+                                    to="/dashboard/UserHome"
                                     className={({ isActive }) =>
                                         (isActive
                                             ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
