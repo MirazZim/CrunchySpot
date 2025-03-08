@@ -69,15 +69,17 @@ const AuthProvider = ({ children }) => {
           .then((res) => {
             if (res.data.token) {
               localStorage.setItem("access-token", res.data.token);
+              setLoading(false);
             }
           })
           .catch((error) => {
             console.error("JWT Token fetch failed", error);
           });
       } else {
-        localStorage.removeItem("access-token"); // ✅ Ensure token is removed on logout
+        localStorage.removeItem("access-token");
+        setLoading(false); // ✅ Ensure token is removed on logout
       }
-      setLoading(false);
+      
     });
 
     return () => unsubscribe();
