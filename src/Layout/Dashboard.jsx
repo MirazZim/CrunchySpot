@@ -10,7 +10,11 @@ const Dashboard = () => {
     const [isAdmin, isLoading, error] = useAdmin();
 
     if (isLoading) {
-        return <div>Loading...</div>; // Display a loading indicator
+        return (
+            <div className="fixed top-0 left-0 right-0 bottom-0 bg-white/50 flex items-center justify-center">
+                <span className="loading loading-infinity loading-xl"></span>
+            </div>  
+        );
     }
 
     if (error) {
