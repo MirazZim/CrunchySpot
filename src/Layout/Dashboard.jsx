@@ -43,8 +43,8 @@ const Dashboard = () => {
                         <div className="bg-red-500 text-white w-16 h-16 rounded-full flex items-center justify-center">
                             <FaTimes size={30} />
                         </div>
-                        <h1 className="text-2xl font-bold text-red-600">Error Occurred</h1>
-                        <p className="text-gray-600">Failed to load admin status. Please try again later.</p>
+                        <h1 className="text-2xl font-bold text-red-600">JWT Error</h1>
+                        <p className="text-gray-600">Refresh the page to fix this issue.</p>
                         <button
                             onClick={() => window.location.reload()}
                             className="bg-red-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-red-600 transition-all"
