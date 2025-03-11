@@ -6,7 +6,7 @@ const ContactUs = () => {
     return (
         <div>
             <Cover img={Conntact_Us_banner} title="Contact Us" />
-            <SectionTitle subHeading={"Visit Us"} heading={"Our Address"} />
+            <SectionTitle subHeading={"Visit Us here"} heading={"Our Address"} />
             <div className="flex flex-wrap gap-4 p-6 bg-[#f5f0f0] border border-gray-200 rounded-lg shadow-xl">
 
                 {/* Phone Card */}

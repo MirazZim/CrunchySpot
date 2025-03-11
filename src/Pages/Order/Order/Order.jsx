@@ -35,7 +35,7 @@ const Order = () => {
   const drinks = menu.filter((item) => item.category === "drinks");
 
   return (
-    <div className="bg-white">
+    <div className="">
       <Cover img={OrderBanner} title="Order Food" />
       <br />
       
@@ -45,7 +45,7 @@ const Order = () => {
           " inset 0 4px 6px -1px rgba(0, 0, 0, 0.2), inset 0 2px 4px -2px rgba(0, 0, 0, 0.2), inset 0 -4px 6px -1px rgba(0, 0, 0, 0.2), inset 0 -2px 4px -2px rgba(0, 0, 0, 0.2)"
       }}>
         <Tabs selectedIndex={tabIndex} onSelect={handleTabSelect}>
-          <TabList className="flex justify-center gap-2 mb-7">
+          <TabList className="flex flex-wrap justify-center gap-4 p-2 border-b border-gray-300 shadow-sm  md:gap-6 md:p-4">
             <Tab className="btn bg-[#16453D] hover:bg-[#12332E] text-gray-100 font-medium rounded-full px-8 py-3 text-base shadow-lg shadow-[#16453D]/50 transition duration-300 ease-in-out hover:scale-105" style={{ boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}>Salad</Tab>
             <Tab className="btn bg-[#16453D] hover:bg-[#12332E] text-gray-100 font-medium rounded-full px-8 py-3 text-base shadow-lg shadow-[#16453D]/50 transition duration-300 ease-in-out hover:scale-105" style={{ boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}>Pizza</Tab>
             <Tab className="btn bg-[#16453D] hover:bg-[#12332E] text-gray-100 font-medium rounded-full px-8 py-3 text-base shadow-lg shadow-[#16453D]/50 transition duration-300 ease-in-out hover:scale-105" style={{ boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}>Soup</Tab>

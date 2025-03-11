@@ -17,28 +17,54 @@ const Menu = () => {
   const todaysMenu = menu.filter((item) => item.category === "offered");
 
   return (
-    <div>
-        <Cover img={MenuBackDrop} title="Our Menu"/>
-        <SectionTitle heading="Today's Special" subHeading="Don't miss" /> 
-        <MenuCategory items={todaysMenu}/> 
+    <div className="space-y-12 p-6 bg-gray-50">
 
-        {/* Dessert Menu Item */}
-        <SectionTitle heading="Desserts" subHeading="Please Check" />
-        <MenuCategory title="desserts" message="Please Check Our Dessert Menu" coverImg={DessertBackDrop} items={dessert}/>
+      {/* Main Cover */}
+      <Cover img={MenuBackDrop} title="Our Menu" />
 
-        {/* Salad Menu Item */}
-        <SectionTitle heading="Salad" subHeading="Please Check" />
-        <MenuCategory title="salad" message="Please Check Our Salad Menu" coverImg={saladBackDrop} items={salad}/>  
+      {/* Today's Special */}
+      <SectionTitle heading="Today's Special" subHeading="Don't miss" />
+      <MenuCategory items={todaysMenu} />
 
-        {/* Soup Menu Item */}  
-        <SectionTitle heading="Soup" subHeading="Please Check" />
-        <MenuCategory title="soup" message="Please Check Our Soup Menu" coverImg={soupBackDrop} items={soup}/>
+      {/* Dessert Menu */}
+      <div className="relative rounded-xl overflow-hidden shadow-lg">
+        <img src={DessertBackDrop} 
+          className="w-full h-[250px] md:h-[400px] object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/20 flex items-center justify-center">
+          <h2 className="text-white text-3xl md:text-5xl font-bold uppercase">Desserts</h2>
+        </div>
+      </div>
+      <MenuCategory items={dessert} />
 
-        {/* Pizza Menu Item */}  
-        <SectionTitle heading="Pizza" subHeading="Please Check" />
-        <MenuCategory title="pizza" message="Please Check Our Pizza Menu" coverImg={pizzaBackDrop} items={pizza}/>
+      {/* Salad Menu */}
+      <div className="relative rounded-xl overflow-hidden shadow-lg">
+        <img src={saladBackDrop} alt="Salad"
+          className="w-full h-[250px] md:h-[400px] object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/20 flex items-center justify-center">
+          <h2 className="text-white text-3xl md:text-5xl font-bold uppercase">Salad</h2>
+        </div>
+      </div>
+      <MenuCategory items={salad} />
 
-        {/*  */}  
+      {/* Soup Menu */}
+      <div className="relative rounded-xl overflow-hidden shadow-lg">
+        <img src={soupBackDrop} alt="Soup"
+          className="w-full h-[250px] md:h-[400px] object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/20 flex items-center justify-center">
+          <h2 className="text-white text-3xl md:text-5xl font-bold uppercase">Soup</h2>
+        </div>
+      </div>
+      <MenuCategory items={soup} />
+
+      {/* Pizza Menu */}
+      <div className="relative rounded-xl overflow-hidden shadow-lg">
+        <img src={pizzaBackDrop} alt="Pizza"
+          className="w-full h-[250px] md:h-[400px] object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/20 flex items-center justify-center">
+          <h2 className="text-white text-3xl md:text-5xl font-bold uppercase">Pizza</h2>
+        </div>
+      </div>
+      <MenuCategory items={pizza} />
 
     </div>
   )

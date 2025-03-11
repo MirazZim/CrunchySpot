@@ -9,21 +9,11 @@ const PopularMenu = () => {
   const [menu, loading] = useMenu();
   const popularItems = menu.filter((item) => item.category === "popular");
 
-  /*  const [menu, setMenu] = useState([]);
-   useEffect(() => {
-     fetch("menu.json")
-       .then((res) => res.json())
-       .then((data) => {
-         const popularItems = data.filter((item) => item.category === "popular");
-         setMenu(popularItems);
-       });
-   }, []); */
-
   return (
     <section className="mb-12">
       <SectionTitle heading="From Our Menu" subHeading="Popular Items" />
       <div
-        className="grid md:grid-cols-2 gap-10 rounded-lg p-8 bg-gradient-to-r from-gray-50 to-gray-300"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2  gap-10 rounded-lg p-8 bg-gradient-to-r from-gray-50 to-gray-300"
         style={{
           boxShadow:
             "inset 0 4px 6px -1px rgba(0, 0, 0, 0.2), inset 0 2px 4px -2px rgba(0, 0, 0, 0.2), inset 0 -4px 6px -1px rgba(0, 0, 0, 0.2), inset 0 -2px 4px -2px rgba(0, 0, 0, 0.2)"
