@@ -49,8 +49,8 @@ const AdminHome = () => {
 
     return (
         <div className="container mx-auto py-8">
-            <h2 className="text-3xl font-bold mb-6">
-                Welcome, {user?.displayName || 'Back'}!
+            <h2 className="text-3xl text-gray-600 font-bold mb-6">
+                Welcome The Young LEGEND aka, {user?.displayName || 'Back'}!
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

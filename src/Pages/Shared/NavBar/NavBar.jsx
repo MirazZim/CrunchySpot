@@ -22,6 +22,7 @@ const NavBar = () => {
       <li className="mr-4"><Link to="/">Home</Link></li>
       <li className="mr-4"><Link to="/menu">Menu</Link></li>
       <li className="mr-4"><Link to="/order/salad">Order Food</Link></li>
+      <li className="mr-4"><Link to="/contact">Contact Us</Link></li>
       <li className="mr-4"><Link to="/dashboard/cart">
         <TiShoppingCart className="text-2xl" />
         <div className="badge badge-secondary ml-2">{cart.length || 0}</div>

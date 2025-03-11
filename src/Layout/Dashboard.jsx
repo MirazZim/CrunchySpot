@@ -69,17 +69,7 @@ const Dashboard = () => {
                                     <FaList className="mr-3 text-lg text-black" /> Manage Items
                                 </NavLink>
 
-                                <NavLink
-                                    to="/dashboard/manageBookings"
-                                    className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }
-                                >
-                                    <FaBookBookmark className="mr-3 text-lg text-black" /> Manage Bookings  ({cart.length})
-                                </NavLink>
+                                
 
                                 <NavLink
                                     to="/dashboard/users"
