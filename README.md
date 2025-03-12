@@ -4,6 +4,10 @@
 
 ---
 
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)  [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)  [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)  [![DaisyUI](https://img.shields.io/badge/DaisyUI-FFDD40?style=for-the-badge&logo=daisyui&logoColor=black)](https://daisyui.com/)
+
+---
+
 ## 🌐 Live Demo
 
 - **Client:** [CrunchySpot Frontend](https://crunchyspot-22124.web.app)
