@@ -4,7 +4,7 @@
 
 ---
 
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)  [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)  [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)  [![DaisyUI](https://img.shields.io/badge/DaisyUI-FFDD40?style=for-the-badge&logo=daisyui&logoColor=black)](https://daisyui.com/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)  [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)  [![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)  [![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)
 
 ---
 
@@ -42,27 +42,24 @@
 
 ### **Frontend**
 
-- **🔄 React.js**  
+- **[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)**  
   Chosen for its fast rendering, modular architecture, and flexibility in building dynamic, interactive UIs.
 
-- **🌈 Tailwind CSS**  
+- **[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)**  
   Selected for its utility-first design, enabling rapid development with a sleek and consistent UI across devices.
-
-- **🌍 React Router**  
-  Enables clean and efficient routing to improve page navigation and preserve app state.
 
 ### **Backend**
 
-- **🟢 Node.js**  
+- **[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)**  
   Ideal for its asynchronous capabilities and non-blocking I/O, ensuring smooth performance under heavy traffic.
 
-- **🚀 Express.js**  
+- **[![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)**  
   Chosen for its lightweight yet powerful framework that simplifies API handling and server-side logic.
 
-- **🔗 Firebase**  
+- **[![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)**  
   Offers secure and fast authentication with additional hosting capabilities for improved deployment speed.
 
-- **📊 MongoDB (Optional)**  
+- **[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)**  
   Designed for flexible schema handling and optimized data storage for restaurant details and reviews.
 
 ---
