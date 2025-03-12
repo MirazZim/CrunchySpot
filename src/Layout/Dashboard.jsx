@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import {
-    FaAd,FaCalendar,FaHome,FaList,FaPaypal,FaPhone,FaShoppingCart,FaUsers,FaUtensils,FaBars,FaTimes,FaSignOutAlt,
+    FaAd, FaCalendar, FaHome, FaList, FaPaypal, FaPhone, FaShoppingCart, FaUsers, FaUtensils, FaBars, FaTimes, FaSignOutAlt,
     FaHistory,
     FaUser,
     FaFirstOrder,
@@ -17,7 +17,7 @@ const Dashboard = () => {
     const [cart] = UseCart();
     const [isAdmin, isLoading, error] = useAdmin();
     const [isSidebarOpen, setSidebarOpen] = useState(true); // Sidebar toggle
-    const {logOut}  = useContext(AuthContext);
+    const { logOut } = useContext(AuthContext);
 
     // Loading Screen
     if (isLoading) {
@@ -44,7 +44,7 @@ const Dashboard = () => {
                             <FaTimes size={30} />
                         </div>
                         <h1 className="text-2xl font-bold text-red-600">JWT Error</h1>
-                        <p className="text-gray-600">Refresh the page to fix this issue.</p>
+                        <p className="text-gray-600">Sorry, we are fixing this issue ASAP. Meanwhile, Refresh the page to fix this issue.</p>
                         <button
                             onClick={() => window.location.reload()}
                             className="bg-red-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-red-600 transition-all"
@@ -91,38 +91,38 @@ const Dashboard = () => {
                         <>
                             {/* Admin Links */}
                             <NavLink to="/dashboard/AdminHome" className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }>
+                                (isActive
+                                    ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                    : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                                " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                            }>
                                 <FaHome className="mr-3 text-lg text-black" /> Admin Home
                             </NavLink>
 
                             <NavLink to="/dashboard/addItems" className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }>
+                                (isActive
+                                    ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                    : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                                " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                            }>
                                 <FaUtensils className="mr-3 text-lg text-black" /> Add Items
                             </NavLink>
 
                             <NavLink to="/dashboard/manageItems" className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") + 
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }>
+                                (isActive
+                                    ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                    : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                                " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                            }>
                                 <FaList className="mr-3 text-lg text-black" /> Manage Items
                             </NavLink>
 
                             <NavLink to="/dashboard/users" className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }>
+                                (isActive
+                                    ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                    : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                                " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                            }>
                                 <FaUsers className="mr-3 text-lg text-black" /> All Users
                             </NavLink>
                         </>
@@ -130,37 +130,37 @@ const Dashboard = () => {
                         <>
                             {/* User Links */}
                             <NavLink to="/dashboard/UserHome" className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }>
+                                (isActive
+                                    ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                    : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                                " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                            }>
                                 <FaUser className="mr-3 text-lg text-black" /> User Home
                             </NavLink>
 
                             <NavLink to="/dashboard/payment" className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }>
+                                (isActive
+                                    ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                    : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                                " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                            }>
                                 <FaPaypal className="mr-3 text-lg text-black" /> Payment
                             </NavLink>
                             <NavLink to="/dashboard/paymentHistory" className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }>
+                                (isActive
+                                    ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                    : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                                " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                            }>
                                 <FaHistory className="mr-3 text-lg text-black" /> Payment History
                             </NavLink>
 
                             <NavLink to="/dashboard/cart" className={({ isActive }) =>
-                                        (isActive
-                                            ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
-                                            : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
-                                        " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
-                                    }>
+                                (isActive
+                                    ? "bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700 border-l-4 border-gray-400"
+                                    : "hover:bg-gradient-   to-r hover:from-gray-100 hover:to-transparent text-gray-600") +
+                                " flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium"
+                            }>
                                 <FaShoppingCart className="mr-3 text-lg text-black" /> My Cart ({cart.length})
                             </NavLink>
                         </>

@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const axiosOpenForAll = axios.create({
-     baseURL : 'http://localhost:3000'
+     baseURL : 'https://crunchy-spot-server.vercel.app'
 })
 const useAxiosOpenForAll = () => {
   return axiosOpenForAll;

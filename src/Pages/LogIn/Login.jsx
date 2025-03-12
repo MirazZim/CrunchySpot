@@ -92,8 +92,8 @@ const Login = () => {
                             </div>
                         </div>
 
-                        {/* Submit Button disabled={disabled}*/}
-                        <button type="submit"  className="w-full bg-blue-600 text-white p-3 rounded-lg text-lg font-semibold transition duration-300 ease-in-out hover:bg-blue-700 disabled:bg-gray-400">Sign In</button>
+                        {/* Submit Button */}
+                        <button type="submit" disabled={disabled} className="w-full bg-blue-600 text-white p-3 rounded-lg text-lg font-semibold transition duration-300 ease-in-out hover:bg-blue-700 disabled:bg-gray-400">Sign In</button>
                     </form>
 
                     {/* Register Link */}

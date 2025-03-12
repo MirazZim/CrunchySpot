@@ -8,7 +8,7 @@ const useAxiosSecure = () => {
   const navigate = useNavigate();
 
   const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3000', // Replace with your server's base URL
+    baseURL: 'https://crunchy-spot-server.vercel.app', // Replace with your server's base URL
   });
 
   useEffect(() => {
